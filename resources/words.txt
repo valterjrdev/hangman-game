@@ -1,0 +1,8 @@
+animal;cachorro
+animal;baleia
+animal;elefante
+animal;flamingo
+animal;guaxinim
+fruta;abacate
+fruta;acerola
+fruta;cacau
