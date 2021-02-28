@@ -1,2 +1,2 @@
-A
-B
+animal;cachorro
+animal;gato
