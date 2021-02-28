@@ -1,5 +1,7 @@
 # Hangman Game
 
+[![Build Status](https://travis-ci.org/valterjrdev/hangman-game.svg?branch=master)](https://travis-ci.org/valterjrdev/hangman-game)
+
 ## Installation
 
 ```bash
