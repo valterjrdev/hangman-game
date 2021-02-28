@@ -12,14 +12,22 @@ composer install
 php bin/console app:game
 ```
 
+Or
+
+```bash
+docker-compose run --rm app
+```
+
 ## Tests
 
 ```bash
 composer run test
 ```
 
-## Static Analysis Tools
+## Static analysis tools
 
 ```bash
 composer run static
 ```
+
+
