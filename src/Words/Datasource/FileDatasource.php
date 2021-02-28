@@ -6,18 +6,28 @@ use App\Words\WordCollection;
 use App\Words\WordCollectionInterface;
 use App\Words\Word;
 use App\Exception\FileNotFoundException;
+use App\Exception\FileRecordInvalidFormatException;
 
+/**
+ * @package App\Words\Datasource
+ */
 class FileDatasource implements DatasourceInterface 
 {
+    /**
+     * @var string
+     */
     private string $path;
 
+    /**
+     * @param string $path
+     */
     public function __construct(string $path)
     {
         $this->path = $path;
     }
     
      /**
-     * @return array
+     * @return array<string>
      */
     public function getWords(): array 
     {
@@ -34,14 +44,25 @@ class FileDatasource implements DatasourceInterface
 
         $collection = new WordCollection();
   
+        /**
+         * @var string $value
+         */
         foreach ($words as $value) {
-            $collection->add(new Word($value));
+            if (!str_contains($value, DatasourceInterface::CHARACTER_SPLIT_ROW)) {
+                throw new FileRecordInvalidFormatException($value);
+            }
+
+            $split = explode(";", $value);
+            $collection->add(new Word($split[1], $split[0]));
         }
 
         return $collection;
     }
 
-    private function load()
+    /**
+     * @return \SplFileObject
+     */
+    private function load(): \SplFileObject
     {
         if (is_dir($this->path) || !file_exists($this->path)) {
             throw new FileNotFoundException($this->path);

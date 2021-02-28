@@ -2,10 +2,13 @@
 
 namespace App\Words;
 
+/**
+ * @package App\Words
+ */
 class WordCollection extends \ArrayObject implements WordCollectionInterface
 {
     /**
-     * @return WordCollection
+     * @return WordCollection<WordInterface>
      */
     public function add(WordInterface $word): WordCollectionInterface
     {
@@ -14,7 +17,7 @@ class WordCollection extends \ArrayObject implements WordCollectionInterface
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public function toArray(): array
     {
