@@ -6,6 +6,12 @@
 composer install
 ```
 
+## Usage
+
+```bash
+php bin/console app:game
+```
+
 ## Tests
 
 ```bash
@@ -16,10 +22,4 @@ composer run test
 
 ```bash
 composer run static
-```
-
-## Usage
-
-```bash
-
 ```
