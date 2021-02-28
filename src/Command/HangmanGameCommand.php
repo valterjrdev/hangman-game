@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace App\Command;
 
@@ -19,7 +19,7 @@ class HangmanGameCommand extends Command
     /**
      * @param InputInterface $input
      * @param OutputInterface $output
-     * 
+     *
      * @return int
      */
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -35,14 +35,14 @@ class HangmanGameCommand extends Command
          */
         $section = $output->section();
 
-        while(true) { 
+        while (true) {
             $section->writeln($this->display($game, $word));
 
             $question = new Question('Digite a letra: ', '');
             $letter = $helper->ask($input, $output, $question);
 
             $game->input($letter);
-            
+
             if (!$game->tryAgain()) {
                 $section->clear();
                 $section->writeln($this->display($game, $word));
@@ -58,24 +58,24 @@ class HangmanGameCommand extends Command
             if ($game->win()) {
                 $section->clear();
                 $section->writeln($this->display($game, $word));
-                
+
                 $section->writeln([
                     "",
                     "Você acertou!"
                 ]);
-                
+
                 return Command::SUCCESS;
             }
 
             $section->clear();
         }
     }
-    
+
 
     /**
      * @param HangmanGame $game
      * @param WordInterface $word
-     * 
+     *
      * @return array<string>
      */
     private function display(HangmanGame $game, WordInterface $word): array

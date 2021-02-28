@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace App\Words;
 
@@ -7,7 +7,7 @@ use App\Words\Datasource\DatasourceInterface;
 /**
  * @package App\Words
  */
-class WordGenerator 
+class WordGenerator
 {
     /**
      * @var DatasourceInterface
@@ -28,7 +28,6 @@ class WordGenerator
     public function generate(): WordInterface
     {
         $words = $this->datasource->getWords();
-        
         /**
          * @var WordInterface $word
          */

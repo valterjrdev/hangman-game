@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace App\Words;
 
@@ -19,7 +19,7 @@ interface WordInterface
 
     /**
      * @param int $index
-     * 
+     *
      * @return string
      */
     public function getLetter(int $index): string;

@@ -7,5 +7,5 @@ before_script:
 - composer install --no-interaction
 
 script:
-    - vendor/bin/phpunit
-    - vendor/bin/phpstan analyse -c phpstan.neon
+    - composer run test
+    - composer run static

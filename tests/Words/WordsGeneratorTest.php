@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace App\Tests;
 
@@ -33,7 +33,7 @@ final class WordsGeneratorTest extends TestCase
      * @return void
      */
     public function testWordGenerateFileDataSource(): void
-    { 
+    {
         $file = sprintf("%s/resources/words.txt", dirname(__DIR__));
         $object = new WordGenerator(new FileDatasource($file));
         $word = $object->generate();
@@ -48,7 +48,7 @@ final class WordsGeneratorTest extends TestCase
      * @return void
      */
     public function testWordGenerateFileDataSourceFileNotFound(): void
-    { 
+    {
         $this->expectException(FileNotFoundException::class);
         $object = new WordGenerator(new FileDatasource("/tmp"));
         $object->generate();
@@ -58,7 +58,7 @@ final class WordsGeneratorTest extends TestCase
      * @return void
      */
     public function testWordGenerateArrayDataSourceRecordInvalidFormat(): void
-    { 
+    {
         $this->expectException(FileRecordInvalidFormatException::class);
         $object = new WordGenerator(new ArrayDatasource(["animalA"]));
         $object->generate();
@@ -68,7 +68,7 @@ final class WordsGeneratorTest extends TestCase
      * @return void
      */
     public function testWordGenerateFileDataSourceRecordInvalidFormat(): void
-    { 
+    {
         $this->expectException(FileRecordInvalidFormatException::class);
         $file = sprintf("%s/resources/words_invalid.txt", dirname(__DIR__));
         $object = new WordGenerator(new FileDatasource($file));
@@ -85,4 +85,3 @@ final class WordsGeneratorTest extends TestCase
         $this->assertEquals("A", $word->getLetter(0));
     }
 }
-

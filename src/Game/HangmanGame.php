@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace App\Game;
 
@@ -9,7 +9,7 @@ use App\Words\WordInterface;
  */
 class HangmanGame
 {
-    const FIELD_MASK = "_";
+    private const FIELD_MASK = "_";
 
     /**
      * @var WordInterface
@@ -39,23 +39,23 @@ class HangmanGame
         $this->wordMask = str_repeat(self::FIELD_MASK, $word->getLength());
         $this->word = $word;
         $this->found = [];
-       
+
         $this->configureAttempts();
     }
 
     /**
      * @param string $input
-     * 
+     *
      * @return void
      */
     public function input(string $input): void
-    {  
+    {
         $flag = false;
 
         for ($index = 0; $index < $this->word->getLength(); $index++) {
             $letter = $this->word->getLetter($index);
-            
-            if (in_array($index, $this->found) || $input != $letter) { 
+
+            if (in_array($index, $this->found) || $input != $letter) {
                 continue;
             }
 
@@ -108,5 +108,5 @@ class HangmanGame
     private function configureAttempts(): void
     {
         $this->attempts = rand(3, $this->word->getLength() - 1);
-    }   
+    }
 }

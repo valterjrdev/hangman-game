@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace App\Tests;
 
@@ -14,25 +14,21 @@ final class GameTest extends TestCase
 {
     /**
      * @dataProvider providerWin
-     * 
      * @param string $row
      * @param array<string> $letters
      * @param string $expected
-     * 
      * @return void
      */
     public function testGameWin(string $row, array $letters, string $expected): void
     {
         $object = new WordGenerator(new ArrayDatasource([$row]));
         $word = $object->generate();
-
         $game = new HangmanGame($word);
 
         foreach ($letters as $letter) {
             $game->input($letter);
             $this->assertTrue($game->tryAgain());
-        }   
-        
+        }
         $this->assertTrue($game->win());
         $this->assertNotEmpty($game->getAttempts());
         $this->assertEquals($expected, $game->getWordMask());
@@ -40,24 +36,20 @@ final class GameTest extends TestCase
 
     /**
      * @dataProvider providerLose
-     * 
      * @param string $row
      * @param array<string> $letters
      * @param string $expected
-     * 
      * @return void
      */
     public function testGameLose(string $row, array $letters, string $expected): void
     {
         $object = new WordGenerator(new ArrayDatasource([$row]));
         $word = $object->generate();
-
         $game = new HangmanGame($word);
 
         foreach ($letters as $letter) {
             $game->input($letter);
-        }   
-        
+        }
         $this->assertFalse($game->win());
         $this->assertEquals($expected, $game->getWordMask());
     }

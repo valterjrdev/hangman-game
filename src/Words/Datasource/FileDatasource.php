@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace App\Words\Datasource;
 
@@ -11,7 +11,7 @@ use App\Exception\FileRecordInvalidFormatException;
 /**
  * @package App\Words\Datasource
  */
-class FileDatasource implements DatasourceInterface 
+class FileDatasource implements DatasourceInterface
 {
     /**
      * @var string
@@ -25,13 +25,13 @@ class FileDatasource implements DatasourceInterface
     {
         $this->path = $path;
     }
-    
-     /**
+
+    /**
      * @return array<string>
      */
-    public function getWords(): array 
+    public function getWords(): array
     {
-        $collection = $this->createCollection(); 
+        $collection = $this->createCollection();
         return $collection->toArray();
     }
 
@@ -43,7 +43,7 @@ class FileDatasource implements DatasourceInterface
         $words = $this->load();
 
         $collection = new WordCollection();
-  
+
         /**
          * @var string $value
          */

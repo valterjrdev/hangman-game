@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace App\Words\Datasource;
 
@@ -7,8 +7,8 @@ namespace App\Words\Datasource;
  */
 interface DatasourceInterface
 {
-    const CHARACTER_SPLIT_ROW = ';';
-    
+    public const CHARACTER_SPLIT_ROW = ';';
+
     /**
      * @return array<string>
      */
